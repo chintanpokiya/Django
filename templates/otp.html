@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verification Email</title>
+    <style>
+        /* Reset some default styling */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Background styling */
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f8f8f8; /* Light gray background color */
+            padding: 20px;
+        }
+
+        /* Container for the message */
+        .container {
+            background-color: #ffffff; /* White background for the message */
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        /* Header styling */
+        h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        /* Link styling */
+        a {
+            color: #007bff; /* Bootstrap primary color */
+            text-decoration: none; /* Remove underline */
+            font-weight: bold;
+        }
+
+        /* Hover effect for the link */
+        a:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hello {{ username }}</h1>
+        <p>Please click the link below for your verification:</p>
+        <span>
+            <a href="{{ request.build_absolute_uri }}">Verify Your Account</a>
+        </span>
+    </div>
+</body>
+</html>

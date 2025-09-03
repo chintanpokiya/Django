@@ -1,0 +1,122 @@
+<!doctype html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Contact Form</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f2f3f5; /* Light background for a clean look */
+            margin: 0;
+            padding: 0;
+        }
+
+        .content {
+            margin-top: 50px; /* Space above the content */
+        }
+
+        .container {
+            background: #ffffff; /* White background for the form */
+            border-radius: 10px; /* Rounded corners */
+            padding: 30px; /* Adequate padding */
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+        }
+
+        h3.heading {
+            color: #881228; /* Main heading color */
+            text-align: center; /* Center align heading */
+            margin-bottom: 20px; /* Space below heading */
+        }
+
+        .form-control {
+            border: 1px solid #ced4da; /* Default border */
+            border-radius: 0.25rem; /* Rounded borders */
+            transition: border-color 0.3s ease; /* Smooth transition for focus */
+        }
+
+        .form-control:focus {
+            border-color: #881228; /* Change border color on focus */
+            box-shadow: 0 0 5px rgba(136, 18, 40, 0.5); /* Shadow effect */
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem; /* Space between form groups */
+        }
+
+        .btn-success {
+            background-color: #881228; /* Button background color */
+            border: none; /* Remove border */
+            color: #ffffff; /* Button text color */
+            padding: 10px 20px; /* Adequate padding for button */
+            font-size: 16px; /* Font size for button */
+            border-radius: 5px; /* Rounded button corners */
+            width: 100%; /* Full width button */
+            transition: background-color 0.3s ease; /* Smooth background color transition */
+        }
+
+        .btn-success:hover {
+            background-color: #6a0f1f; /* Darker color on hover */
+            cursor: pointer; /* Pointer cursor on hover */
+        }
+
+        .form-message-success {
+            color: green; /* Success message color */
+            display: {% if success %} block {% else %} none {% endif %}; /* Show success message if applicable */
+            margin-top: 20px; /* Space above success message */
+            text-align: center; /* Center align message */
+        }
+
+        .form-message-warning {
+            color: red; /* Warning message color */
+            display: none; /* Initially hide warning message */
+        }
+
+        img.img-fluid {
+            max-width: 100%; /* Ensure image is responsive */
+            height: auto; /* Maintain aspect ratio */
+            margin-top: 20px; /* Space above the image */
+        }
+    </style>
+</head>
+<body>
+<div class="content">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <h3 class="heading mb-4">Let's talk about everything!</h3>
+                        <p>We’d love to hear and work for you.</p>
+                        <img src="{% static 'images/undraw-contact.svg' %}" alt="Contact Us" class="img-fluid">
+                    </div>
+                    <div class="col-md-6">
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <button type="submit" class="btn btn-success">Send Request</button>
+                        </form>
+                        <div class="form-message-warning mt-4"></div>
+                        <div class="form-message-success">
+                            Your message was sent, thank you!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/jquery.validate.min.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

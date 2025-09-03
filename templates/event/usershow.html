@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Users</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+            background: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-image: url('https://www.transparenttextures.com/patterns/hexellence.png');
+        }
+
+        .container {
+            background: #fff;
+            border: 2px solid #881228;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 0 10px rgba(136, 18, 40, 0.3);
+            width: 90%;
+            margin-top: 20px;
+            overflow: auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #881228;
+            margin-bottom: 20px;
+        }
+
+        .btn-primary, .btn-warning, .btn-danger {
+            background-color: #881228;
+            border-color: #881228;
+            color: #fff;
+        }
+
+        .btn-primary:hover, .btn-warning:hover, .btn-danger:hover {
+            background-color: #6a0f1f;
+            border-color: #6a0f1f;
+        }
+
+        .table th, .table td {
+            vertical-align: middle;
+        }
+
+        .table img {
+            border-radius: 5px;
+        }
+
+        .table {
+            table-layout: fixed;
+            width: 100%;
+        }
+
+        .table td {
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="col text-start">
+            <form action="{% url 'addmin' %}" method="post" class="d-inline">
+                {% csrf_token %}
+                <button class="btn btn-warning">Back</button>
+            </form>
+        </div>
+        <h1>Show Users</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">User Name</th>
+                    <th scope="col">Email ID</th>
+                    <th scope="col">Actions</th>
+                </tr>    
+            </thead>
+            <tbody>
+                {% for i in obj %}
+                <tr>
+                    <td>{{i.username}}</td>
+                    <td>{{i.email}}</td>
+
+                    <td>
+                        <div class="d-inline-block mr-2">
+                            <a href="{% url 'userdelete' i.username %}" class="btn btn-danger btn-sm">Delete</a>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

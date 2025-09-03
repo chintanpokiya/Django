@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Form</title>
+    {% load crispy_forms_tags %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+            background: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            background-image: url('https://www.transparenttextures.com/patterns/hexellence.png');
+        }
+
+        .container {
+            background: #fff;
+            border: 2px solid #881228;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 0 10px rgba(136, 18, 40, 0.3);
+            width: 600px; /* Matches the width in the login design */
+        }
+
+        h1 {
+            text-align: center;
+            color: #881228;
+            margin-bottom: 10px;
+        }
+
+        .btn-success {
+            background-color: #881228;
+            border-color: #881228;
+            width: 100%;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .btn-success:hover {
+            background-color: #6a0f1f;
+            border-color: #6a0f1f;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            color: #881228;
+        }
+
+        .form-control {
+            border-color: #881228;
+        }
+
+        .form-control:focus {
+            border-color: #6a0f1f;
+            box-shadow: 0 0 5px rgba(136, 18, 40, 0.5);
+        }
+
+        .form-control-file {
+            border-color: #881228;
+        }
+
+        .form-control-file:focus {
+            border-color: #6a0f1f;
+            box-shadow: 0 0 5px rgba(136, 18, 40, 0.5);
+        }
+        textarea.form-control{
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>BOOK BECHOLER PARTY</h1>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button type="submit"  class="btn btn-success">Submit</button>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

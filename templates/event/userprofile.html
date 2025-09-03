@@ -1,0 +1,217 @@
+{% load static %}
+
+<head>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<section style="background-color: #eee;">
+    <div class="container py-5">
+        <!-- Buttons Row -->
+        <div class="row mb-4">
+            <div class="col text-start">
+                <form action="{% url 'index' %}" method="post" class="d-inline">
+                    {% csrf_token %}
+                    <button class="btn btn-warning">Home</button>
+                </form>
+            </div>
+            <div class="col text-end">
+                {% if profile_incomplete %}
+                    <form action="{% url 'profile' %}" method="get" class="d-inline">
+                        <button class="btn btn-warning">Complete Profile</button>
+                    </form>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Profile Section -->
+            <div class="col-lg-4">
+                <div class="card mb-4">
+                    <div class="card-body text-center">
+                        <div class="d-flex justify-content-center align-items-center" style="width: 100%; height: 150px;">
+                            <img src="/media/{{ profile.image }}" width="150px" height="150px" alt="Profile Image" class="rounded-circle">
+                        </div>
+                        <h5 class="my-3">{{ profile.user.username }}</h5>
+                        <p class="text-muted mb-1">{{ profile.address }}, {{ profile.city }}, {{ profile.state }}, {{ profile.zipcode }}</p>
+                        <div class="d-flex justify-content-center mb-2">
+                            {% if user.is_authenticated %}
+                                <!-- Change Password Button -->
+                                <form action="{% url 'change_password' %}" method="post" class="me-2">
+                                    {% csrf_token %}
+                                    <button class="btn btn-primary" type="submit">Change Password</button>
+                                </form>
+                                <!-- Logout Button -->
+                                <form action="{% url 'logout' %}" method="post">
+                                    {% csrf_token %}
+                                    <button class="btn btn-danger" type="submit">Logout</button>
+                                </form>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social and other contact info could go here -->
+                <div class="card mb-4">
+                    <div class="card-body p-0">
+                        <ul class="list-group list-group-flush">
+                            <!-- Example social link -->
+                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                                <i class="fas fa-globe fa-lg text-warning"></i>
+                                <p class="mb-0">https://mywebsite.com</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+<!-- User Details and Orders Section -->
+            <div class="col-lg-8">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <!-- Full Name -->
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Full Name</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{ profile.user.username }}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <!-- Email -->
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Email</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{ profile.user.email }}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <!-- Phone -->
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Phone</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{ profile.mobile }}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <!-- Address -->
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Address</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{ profile.address }}, {{ profile.city }}, {{ profile.state }}, {{ profile.zipcode }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-8"> <!-- Changed from col-md-6 to col-md-8 -->
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <p class="mb-4"><span class="text-primary font-italic">Orders</span> User's Services</p>
+                                
+                                <!-- Bachelor Orders -->
+                                <h5>Bachelor Orders</h5>
+                                {% for order in becholer_orders %}
+                                <p>{{ order.fname }} {{ order.lname }} | Budget: {{ order.max_budget }} | Address: {{ order.addr }} </p>
+                                <p>
+                                    <a class="btn btn-info" href="{% url 'pdf_view' 'becholer' order.oid %}" target="_blank">View Invoice</a>
+                                    <a class="btn btn-info" href="{% url 'pdf_download' 'becholer' order.oid %}">Download Invoice</a>
+                                </p>
+                                <div class="progress" style="height: 5px;">
+                                    <div class="progress-bar 
+                                        {% if order.status == 'Completed' %}
+                                            bg-success
+                                        {% else %}
+                                            {% if order.status == 'Pending' %}
+                                                bg-warning
+                                            {% else %}
+                                                bg-danger
+                                            {% endif %}
+                                        {% endif %}" 
+                                        role="progressbar" 
+                                        style="width: {% if order.status == 'Completed' %}100%{% else %}50%{% endif %};" 
+                                        aria-valuenow="{{ order.progress }}" 
+                                        aria-valuemin="0" 
+                                        aria-valuemax="100">{{ order.progress }}%</div>
+                                </div>
+                                
+                                {% empty %}
+                                <p>No Bachelor orders</p>
+                                {% endfor %}
+                                
+                                <hr>
+                                
+                                <!-- Wedding Orders -->
+                                <h5>Wedding Orders</h5>
+                                {% for order in wedding_orders %}
+                                <p>{{ order.gname }} and {{ order.bname }} | Budget: {{ order.max_budget }} | Venue: {{ order.venue }} </p>
+                                <p>
+                                    <a class="btn btn-info" href="{% url 'pdf_view' 'wedding' order.oid %}" target="_blank">View Invoice</a>
+                                    <a class="btn btn-info" href="{% url 'pdf_download' 'wedding' order.oid %}">Download Invoice</a>
+                                </p>
+                                <div class="progress" style="height: 5px;">
+                                    <div class="progress-bar 
+                                        {% if order.status == 'Completed' %}
+                                            bg-success
+                                        {% else %}
+                                            {% if order.status == 'Pending' %}
+                                                bg-warning
+                                            {% else %}
+                                                bg-danger
+                                            {% endif %}
+                                        {% endif %}" 
+                                        role="progressbar" 
+                                        style="width: {% if order.status == 'Completed' %}100%{% else %}50%{% endif %};" 
+                                        aria-valuenow="{{ order.progress }}" 
+                                        aria-valuemin="0" 
+                                        aria-valuemax="100">{{ order.progress }}%</div>
+                                </div>
+                                
+                                {% empty %}
+                                <p>No Wedding orders</p>
+                                {% endfor %}
+                                
+                                <hr>
+                                
+                                <!-- Reception Orders -->
+                                <h5>Reception Orders</h5>
+                                {% for order in reception_orders %}
+                                <p>{{ order.gname }} and {{ order.bname }} | Budget: {{ order.max_budget }} | Venue: {{ order.venue }}</p>
+                                <p>
+                                    <a class="btn btn-info" href="{% url 'pdf_view' 'reception' order.oid %}" target="_blank">View Invoice</a>
+                                    <a class="btn btn-info" href="{% url 'pdf_download' 'reception' order.oid %}">Download Invoice</a>
+                                </p>
+                                <div class="progress" style="height: 5px;">
+                                    <div class="progress-bar 
+                                        {% if order.status == 'Completed' %}
+                                            bg-success
+                                        {% else %}
+                                            {% if order.status == 'Pending' %}
+                                                bg-warning
+                                            {% else %}
+                                                bg-danger
+                                            {% endif %}
+                                        {% endif %}" 
+                                        role="progressbar" 
+                                        style="width: {% if order.status == 'Completed' %}100%{% else %}50%{% endif %};" 
+                                        aria-valuenow="{{ order.progress }}" 
+                                        aria-valuemin="0" 
+                                        aria-valuemax="100">{{ order.progress }}%</div>
+                                </div>
+                                
+                                {% empty %}
+                                <p>No Reception orders</p>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+</section>

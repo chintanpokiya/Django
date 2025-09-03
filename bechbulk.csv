@@ -1,0 +1,3 @@
+fname,lname,gender,mail,max_budget,theme_name,address,suggestion,status,invoice_sent,booked_at
+mahesh,babu,M,mahesh@gmail.com,50000,BAR Theme,123 Street,Outdoor wedding,Pending,False,01-05-2024 12.00
+Kriti,Senon,F,kriti@gmail.com,10000,Cafe theme,456 Avenue,Beach style,Pending,False,01-06-2024 14.00

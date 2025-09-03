@@ -1,0 +1,802 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en"><!-- Basic -->
+<head>
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">   
+   
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+ 
+     <!-- Site Metas -->
+    <title>Sweetwedding - Responsive OnePage HTML5 Template</title>  
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %} " type="image/x-icon">
+    <link rel="apple-touch-icon" href="{% static 'images/apple-touch-icon.png' %} ">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %} ">
+    <!-- Pogo Slider CSS -->
+    <link rel="stylesheet" href="{% static 'css/pogo-slider.min.css' %} ">
+  <!-- Site CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">    
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %} ">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/custom.css' %} ">
+    <!-- <link rel="stylesheet" href="{% static 'css/vv.css' %} "> -->
+
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-whwrn1QHb8IYz2XlG2mK7JdbJKqEqKp7ElZ9Nqx3TcdEeMUHl4iGEta58NpY4hX4" crossorigin="anonymous"> -->
+
+<style>
+  .image-thumbail {
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .list-group-item a {
+    text-decoration: none;
+    color: black;
+  }
+
+  
+  #request{
+    padding: 15px 10px;
+      text-transform: capitalize;
+      font-size: 15px
+  }
+
+</style>
+
+</head>
+<body id="home" data-spy="scroll" data-target="#navbar-wd" data-offset="98">
+
+  <!-- LOADER -->
+    <div id="preloader">
+    <div class="preloader pulse">
+      <h3>Chintan Pokiya & Krish Nakrani & Femil Ambaliya </h3>
+    </div>
+    </div><!-- end loader -->
+    <!-- END LOADER -->
+  
+  <!-- Start header -->
+  <header class="top-header">
+    <nav class="navbar header-nav navbar-expand-lg">
+            <div class="container">
+        <a class="navbar-brand" href="index.html"><img src="{% static 'images/logo.png' %} " alt="image"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-wd" aria-controls="navbar-wd" aria-expanded="false" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+                <div class="collapse navbar-collapse justify-content-center" id="navbar-wd">
+                    <ul class="navbar-nav">
+                        <li><a class="nav-link active" href="#home">Home</a></li>
+                        <li><a class="nav-link" href="#about">About Us</a></li>
+                        <li><a class="nav-link" href="#gallery">Work Gallery</a></li>
+            <li><a class="nav-link" href="#wedding">Service</a></li>
+                        {% comment %} <li><a class="nav-link" href="#events">Events</a></li> {% endcomment %}
+            {% comment %} <li><a class="nav-link" href="#contact">Contact</a></li> {% endcomment %}
+            <li><a class="nav-link" href="login">sign up</a></li>
+            {% if user.is_authenticated %}
+            
+              {% comment %} <form action="{% url 'userprofile' %}"  method="post">
+                {% csrf_token %}
+                <button  type="submit" style="background: none; border: none; padding: 0;">
+                  <i class="fa fa-user fa-2x" style="color: black;"></i> 
+                </button>
+              </form> {% endcomment %}
+
+            {% endif %}
+            {% if user.is_authenticated %}
+            <form action="{% url 'userprofile' %}" method="post">
+              {% csrf_token %}
+              <button class="btn btn-warning" style = "margin-top:16px;"><i class="fa fa-user"></i> Profile</button>
+            </form>
+            {% endif %}
+                    </ul>
+                </div>
+				<div class="last-header justify-content-end">
+					<ul class="navbar-nav">
+					  <li><a id="request" class="nav-link" href="Contactview">Request Quote</a></li>
+					</ul>
+				  </div>
+            </div>
+        </nav>
+  </header>
+  <!-- End header -->
+  
+  <!-- Start Banner -->
+  <div class="home-slider">
+    <ul class="rslides">
+      <li><img src="{% static 'images/slider-01.jpg' %} " alt=""></li>
+      <li><img src="{% static 'images/slider-02.jpg' %} " alt=""></li>
+      <li><img src="{% static 'images/slider-03.jpg' %} " alt=""></li>
+    </ul>
+    <div class="lbox-details">
+      <h1>Sweetwedding Events Inc.-Best Wedding & Event Management Company in Ahemdabad</h1>
+      <h2>Welcome in EventZone</h3>
+      <div class="countdown main-time clearfix">
+        <div id="timer">
+          <h3> 5 July 2017</h3>
+            <h1 style="color:  #881228;">Hello {{ user.username }}</h1>
+          
+
+          {% comment %} <div id="days"></div>
+          <div id="hours"></div>
+          <div id="minutes"></div>
+          <div id="seconds"></div> {% endcomment %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Banner -->
+
+  <div class="row ulockd-mrgn1225 text-center" style="margin: 0;">
+    <div class="col-12 col-sm-6 col-md-3" style="padding: 0 10px;">
+        <div class="ulockd-ffact-one" style="background: #f8f9fa; padding: 20px; margin: 10px 0; border-radius: 5px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: all 0.3s ease;">
+            <p style="font-size: 18px; margin: 0 0 10px;">Experiences of Events</p>
+            <div class="timer" style="font-size: 36px; font-weight: bold; color: #333;">1000</div>
+            <span class="sign" style="font-size: 24px; color: #007bff;"><b>+</b></span>
+        </div>
+    </div>
+    <div class="col-12 col-sm-6 col-md-3" style="padding: 0 10px;">
+        <div class="ulockd-ffact-one" style="background: #f8f9fa; padding: 20px; margin: 10px 0; border-radius: 5px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: all 0.3s ease;">
+            <p style="font-size: 18px; margin: 0 0 10px;">Bechalor Party</p>
+            <div class="timer" style="font-size: 36px; font-weight: bold; color: #333;">300</div>
+            <span class="sign" style="font-size: 24px; color: #007bff;"><b>+</b></span>
+        </div>
+    </div>
+    <div class="col-12 col-sm-6 col-md-3" style="padding: 0 10px;">
+        <div class="ulockd-ffact-one" style="background: #f8f9fa; padding: 20px; margin: 10px 0; border-radius: 5px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: all 0.3s ease;">
+            <p style="font-size: 18px; margin: 0 0 10px;">Wedding</p>
+            <div class="timer" style="font-size: 36px; font-weight: bold; color: #333;">400</div>
+            <span class="sign" style="font-size: 24px; color: #007bff;"><b>+</b></span>
+        </div>
+    </div>
+    <div class="col-12 col-sm-6 col-md-3" style="padding: 0 10px;">
+        <div class="ulockd-ffact-one" style="background: #f8f9fa; padding: 20px; margin: 10px 0; border-radius: 5px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: all 0.3s ease;">
+            <p style="font-size: 18px; margin: 0 0 10px;">Reception</p>
+            <div class="timer" style="font-size: 36px; font-weight: bold; color: #333;">150</div>
+            <span class="sign" style="font-size: 24px; color: #007bff;"><b>+</b></span>
+        </div>
+    </div>
+</div>
+  
+  <!-- Start About us -->
+  <div id="about" class="about-box">
+    <div class="about-a1">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <div class="title-box">
+              <h2>Our  Feedbacks </h2>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12">
+
+<div class="row align-items-center about-main-info">
+              <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="about-m">
+                  <div class="about-img">
+                    <img class="img-fluid" src="{% static 'images/about-img-01.jpg' %} " alt="" />
+                  </div>
+                  <ul>
+                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-lg-8 col-md-6 col-sm-12">
+                <h2> <i class="fa fa-heart-o" aria-hidden="true"></i> <span>femil ambaliya</span> <i class="fa fa-heart-o" aria-hidden="true"></i></h2>
+                <p>A bride is not just a figure in a wedding ceremony; she embodies dreams fulfilled and futures intertwined. She stands adorned in a gown that reflects her personal style and the significance of the occasion. Her eyes sparkle with excitement and a touch of nervousness, as she prepares to walk down the aisle towards her beloved. Each step she takes is filled with hope, love, and the promise of a shared journey ahead. The bride represents the culmination of meticulous planning and heartfelt anticipation, a symbol of love's enduring commitment and the beginning of a new family legacy. </p>
+              </div>
+            </div>
+            <div class="row align-items-center about-main-info">
+              <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="about-m">
+                  <div class="about-img">
+                    <img class="img-fluid" src="{% static 'images/about-img-02.jpg' %} " alt="" />
+                  </div>
+                  <ul>
+                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-lg-8 col-md-6 col-sm-12">
+                <h2> <i class="fa fa-heart-o" aria-hidden="true"></i> <span>krish nakrani </span> <i class="fa fa-heart-o" aria-hidden="true"></i></h2>
+                <p>The groom, on his wedding day, exudes a blend of confidence and emotion, embodying the anticipation of a lifelong commitment. Dressed in a finely tailored suit or traditional attire, he stands as a pillar of strength and steadfastness, ready to embark on a new chapter of life with his bride. His demeanor reflects a mixture of excitement, joy, and perhaps a hint of solemnity, as he prepares to exchange vows and promises of love. With each step towards the altar, the groom carries the weight of tradition and the promise of a shared future. He represents not only the culmination of preparation and anticipation but also the beginning of a partnership built on respect, love, and mutual support. The groom's presence symbolizes the essence of commitment and the promise to cherish and protect his beloved, marking the start of a new family journey. </p>
+              </div>
+            </div>
+            {% comment %} <div class="row align-items-center about-main-info">
+              <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="about-m">
+                  <div class="about-img">
+                    <img class="img-fluid" src="{% static 'images/Birthday1.jpg' %} " alt="" />
+                  </div>
+                  <ul>
+                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                  </ul>
+                </div>
+              </div> {% endcomment %}
+              {% comment %} <div class="col-lg-8 col-md-6 col-sm-12">
+
+<h2> <i class="fa fa-heart-o" aria-hidden="true"></i> <span>Shane warne</span> <i class="fa fa-heart-o" aria-hidden="true"></i></h2>
+                <p>The groom, on his wedding day, exudes a blend of confidence and emotion, embodying the anticipation of a lifelong commitment. Dressed in a finely tailored suit or traditional attire, he stands as a pillar of strength and steadfastness, ready to embark on a new chapter of life with his bride. His demeanor reflects a mixture of excitement, joy, and perhaps a hint of solemnity, as he prepares to exchange vows and promises of love. With each step towards the altar, the groom carries the weight of tradition and the promise of a shared future. He represents not only the culmination of preparation and anticipation but also the beginning of a partnership built on respect, love, and mutual support. The groom's presence symbolizes the essence of commitment and the promise to cherish and protect his beloved, marking the start of a new family journey. </p>
+              </div> {% endcomment %}
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End About us -->
+  
+  <!-- Start Story -->
+  {% comment %} <div id="story" class="story-box main-timeline-box">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="title-box">
+            <h2>Some SuccessFull Stories</h2>
+            <p>Our story is a tapestry woven with moments of laughter, challenges overcome, and a love that blossoms more beautifully with each passing day. </p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="timeLine">
+        <div class="row">
+          <div class="lineHeader hidden-sm hidden-xs"></div>
+          <div class="lineFooter hidden-sm hidden-xs"></div>
+
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 item" >
+              <div class="caption">
+                <div class="star center-block">
+                  <span class="h3">01</span>
+                  <span>March </span>
+                  <span>2017</span>
+                </div>
+                <div class="image">
+                  <img src="{% static 'images/time-01.jpg' %} " alt="" />
+                  <div class="title">
+                    <h2>First Meet <i class="fa fa-angle-right" aria-hidden="true"></i></h2>
+                  </div>
+                </div>
+                <div class="textContent">
+                  <p class="lead">We met at the wedding of our close friends and immediately found a common language, so a year later our first date happened.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 item">
+              <div class="caption">
+                <div class="star center-block">
+                  <span class="h3">03</span>
+                  <span>April</span>
+                  <span>2017</span>
+                </div>
+                <div class="image">
+                  <img src="{% static 'images/time-02.jpg' %} " alt="" />
+                  <div class="title">
+                    <h2>First date <i class="fa fa-angle-right" aria-hidden="true"></i></h2>
+                  </div>
+                </div>
+                <div class="textContent">
+                  <p class="lead">We met at the wedding of our close friends and immediately found a common language, so a year later our first date happened.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 item">
+              <div class="caption">
+                <div class="star center-block">
+                  <span class="h3">03</span>
+                  <span>May</span>
+                  <span>2017</span>
+                </div>
+                <div class="image">
+                  <img src="{% static 'images/time-03.jpg' %} " alt="" />
+                  <div class="title">
+                    <h2>Proposal <i class="fa fa-angle-right" aria-hidden="true"></i></h2>
+                  </div>
+
+</div>
+                <div class="textContent">
+                  <p class="lead">We met at the wedding of our close friends and immediately found a common language, so a year later our first date happened.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 item">
+              <div class="caption">
+                <div class="star center-block">
+                  <span class="h3">04</span>
+                  <span>June</span>
+                  <span>2017</span>
+                </div>
+                <div class="image">
+                  <img src="{% static 'images/time-04.jpg' %}" alt="" />
+                  <div class="title">
+                    <h2>Engagement <i class="fa fa-angle-right" aria-hidden="true"></i></h2>
+                  </div>
+                </div>
+                <div class="textContent">
+                  <p class="lead">For 2 years of work as support engineer responsible about installing and maintenance SWIFT packages for banks. I gain a lot from it before i leave country.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 item">
+              <div class="caption">
+                <div class="star center-block">
+                  <span class="h3">04</span>
+                  <span>July</span>
+                  <span>2017</span>
+                </div>
+                <div class="image">
+                  <img src="{% static 'images/time-05.jpg' %} " alt="" />
+                  <div class="title">
+                    <h2>My Wedding <i class="fa fa-angle-right" aria-hidden="true"></i></h2>
+                  </div>
+                </div>
+                <div class="textContent">
+                  <p class="lead">Since then i came to Austria as refugee far from my lovers and friends far a way escaping from wars and threats searching a new life that i didn't find until yet.</p>
+                </div>
+              </div>
+            </div>
+
+        </div>
+      </div>
+      
+    </div>
+  </div> {% endcomment %}
+  <!-- End Story -->
+  
+  <!-- Start Family -->
+  {% comment %} <div id="family" class="family-box">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="title-box">
+            <h2>Our happy families</h2>
+            <p>The joining of bride and groom's families creates a new bond of shared love and celebration. </p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-12">
+          <div class="single-team-member">
+            <div class="family-img">
+              <img class="img-fluid" src="{% static 'images/bech1.jpg' %} " alt="" />
+            </div>
+            <div class="family-info">
+              <h4>aman's becholar party </h4>
+              <p>{ aman & friends }</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12">
+          <div class="single-team-member">
+            <div class="family-img">
+              <img class="img-fluid" src="{% static 'images/wed1.jpg' %} " alt="" />
+            </div>
+            <div class="family-info">
+              <h4>tina's wedding</h4>
+              <p>{ tina & groom }</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12">
+          <div class="single-team-member">
+            <div class="family-img">
+              <img class="img-fluid" src="{% static 'images/rec1.jpg' %} " alt="" />
+            </div>
+            <div class="family-info">
+              <h4>emily's reception ceremony </h4>
+              <p>{ emily & family }</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12">
+          <div class="single-team-member">
+            <div class="family-img">
+              <img class="img-fluid" src="{% static 'images/bech2.jpg' %} " alt="" />
+            </div>
+            <div class="family-info">
+
+<h4>rahul's becholar party </h4>
+              <p>{ rahul & couisons}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12">
+          <div class="single-team-member">
+            <div class="family-img">
+              <img class="img-fluid" src="{% static 'images/wed2.jpg' %} " alt="" />
+            </div>
+            <div class="family-info">
+              <h4>will's wedding </h4>
+              <p>{ will & bride }</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12">
+          <div class="single-team-member">
+            <div class="family-img">
+              <img class="img-fluid" src="{% static 'images/rec2.jpg' %} " alt="" />
+            </div>
+            <div class="family-info">
+              <h4>maria's reception ceremony </h4>
+              <p>{ maria & couisons }</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> {% endcomment %}
+  <!-- End Family -->
+  
+  <!-- Start Gallery -->
+  <div id="gallery" class="gallery-box">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="title-box">
+            <h2>Gallery</h2>
+            <p>beautifull moments of the Events</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+         <ul class="popup-gallery clearfix">
+          <li>
+            <a href="{% static 'images/e1.jpg' %} ">
+              <img class="img-fluid" src="{% static 'images/e1.jpg' %} " alt="single image">
+              <span class="overlay"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
+            </a>
+          </li>
+          <li>
+            <a href="{% static 'images/e2.jpg' %} ">
+              <img class="img-fluid" src="{% static 'images/e2.jpg' %} " alt="single image">
+              <span class="overlay"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
+            </a>
+          </li>
+          <li>
+            <a href="{% static 'images/e3.jpg' %} ">
+              <img class="img-fluid" src="{% static 'images/e3.jpg' %} " alt="single image">
+              <span class="overlay"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
+            </a>
+          </li>
+          <li>
+            <a href="{% static 'images/e4.jpg' %} ">
+              <img class="img-fluid" src="{% static 'images/gallery-04.jpg' %} " alt="single image">
+              <span class="overlay"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
+            </a>
+          </li>
+          <li>
+            <a href="{% static 'images/e5.jpg' %} ">
+              <img class="img-fluid" src="{% static 'images/e5.jpg' %} " alt="single image">
+              <span class="overlay"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
+            </a>
+          </li>
+          <li>
+            <a href="{% static 'images/e6.jpg' %} ">
+              <img class="img-fluid" src="{% static 'images/e6.jpg' %} " alt="single image">
+              <span class="overlay"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
+            </a>
+          </li>
+          <li>
+            <a href="{% static 'images/e7.jpg' %} ">
+              <img class="img-fluid" src="{% static 'images/e7.jpg' %} " alt="single image">
+              <span class="overlay"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
+            </a>
+          </li>
+          <li>
+            <a href="{% static 'images/e8.jpg' %} ">
+              <img class="img-fluid" src="{% static 'images/e8.jpg' %} " alt="single image">
+              <span class="overlay"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <div class="row">
+          <ul class="popup-gallery clearfix">
+            {% for photo in photos %}
+            <li class="gallery-item" style="width: 100%;">
+              <a href="{{ photo.image.url }}">
+              <img class="fixed-size-image" src="{{ photo.image.url }}" alt="{{ photo.description }}">
+              <span class="overlay">
+                <i class="fa fa-heart-o" aria-hidden="true"></i>
+              </span>
+              </a>
+            </li>
+            {% empty %}
+            <li>
+              <p>No photos available...</p>
+            </li>
+            {% endfor %}
+          </ul>
+          </div>
+           </div> 
+    </div>
+   
+  </div>
+  <!-- End Gallery -->
+  
+  <!-- Start Wedding -->
+  
+  <div id="wedding" class="wedding-box">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="title-box">
+            <h2>Our services</h2>
+            <p>Expert event planning and management for memorable experiences. </p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <a href="becholertheme">
+                <div class="col-md-4 col-sm-6">
+                    <div class="serviceBox">
+                        <div class="service-icon"><i class="flaticon-bachelorette-party"></i></div>
+                        <h3 class="title">Bachelor Party </h3>
+            <h4>last day as bechalor</h4>
+                        <p class="description">
+              Unforgettable and personalized bachelor parties, tailored to your wildest dreams and desires, ensuring an epic celebration     
+               </p>
+                    </div>
+        </a>
+            </div>
+
+                <div class="col-md-4 col-sm-6">
+        <a href="wedviewplot">                    
+          <div class="serviceBox">
+                        <div class="service-icon"><i class="flaticon-wedding"></i></div>
+                        <h3 class="title">Wedding Ceremony </h3>
+            <h4>life changing event</h4>
+                        <p class="description">
+                            Elegant and personalized wedding planning services, ensuring your special day is unforgettable and flawless.
+                        </p>
+                    </div>
+        </a>
+      </div>
+      
+
+                <div class="col-md-4 col-sm-6">
+        <a href="receptiondest">
+                    <div class="serviceBox">
+                        <div class="service-icon"><i class="flaticon-reception-bell"></i></div>
+                        <h3 class="title">Reception Ceremony </h3>
+            <h4>Embrace the joy</h4>
+                        <p class="description">
+                            Offering exquisite and tailored wedding planning, making sure your Reception Ceremony and special day are unforgettable and flawless.
+                        </p>
+                    </div>
+                </div>
+        </a>
+            </div>
+      
+    </div>
+  </div>
+
+<!-- End Wedding -->
+  
+  <!-- Start Events -->
+  {% comment %} <div id="events" class="events-box">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="title-box">
+            <h2>Events</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-12">
+          <div class="event-inner">
+            <div class="event-img">
+              <img class="img-fluid" src="{% static 'images/event-img-01.jpg' %} " alt="" />
+            </div>
+            <h2>2 June 2018 Engagement</h2>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard </p>
+            <a href="#">See location <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12">
+          <div class="event-inner">
+            <div class="event-img">
+              <img class="img-fluid" src="{% static 'images/event-img-02.jpg' %} " alt="" />
+            </div>
+            <h2>3 June 2018 Main Ceremony </h2>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard </p>
+            <a href="#">See location <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12">
+          <div class="event-inner">
+            <div class="event-img">
+              <img class="img-fluid" src="{% static 'images/event-img-03.jpg' %} " alt="" />
+            </div>
+            <h2>4 June 2018 Wedding party </h2>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard </p>
+            <a href="#">See location <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> {% endcomment %}
+  <!-- End Events -->
+  
+  <!-- Start Contact -->
+  <div id="contact" class="contact-box">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="title-box">
+            <h2>Feedback</h2>
+            <p>Give honest feedback; your thoughts matter to us.</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12 col-sm-12 col-xs-12">
+          <div class="contact-block">
+            <form id="contactForm" method="POST" action="{% url 'send_feedback' %}">
+              {% csrf_token %}
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required data-error="Please enter your name">
+                    <div class="help-block with-errors"></div>
+                  </div>                                 
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input type="email" placeholder="Your Email" id="email" class="form-control" name="email" required data-error="Please enter your email">
+                    <div class="help-block with-errors"></div>
+                  </div> 
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <select class="custom-select d-block form-control" id="guest" name="guest" required data-error="Please select an item in the list.">
+                      <option disabled selected>Number Of star</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                    </select>
+
+<div class="help-block with-errors"></div>
+                  </div> 
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <select class="custom-select d-block form-control" id="event" name="event" required data-error="Please select an item in the list.">
+                      <option disabled selected>I Am Attending*</option>
+                      <option value="1">All events</option>
+                      <option value="2">Wedding ceremony</option>
+                      <option value="3">Reception party</option>
+                    </select>
+                    <div class="help-block with-errors"></div>
+                  </div> 
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group"> 
+                    <textarea class="form-control" id="message" name="message" placeholder="Your Message (per your family)" rows="8" data-error="Write your message" required></textarea>
+                    <div class="help-block with-errors"></div>
+                  </div>
+                  <div class="submit-button text-center">
+                    <button class="btn btn-common" id="submit" type="submit">Send Message</button>
+                    <div id="msgSubmit" class="h3 text-center hidden"></div> 
+                    <div class="clearfix"></div> 
+                  </div>
+                </div>
+              </div>            
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- End Contact -->
+  
+  <!-- Start Footer -->
+  <footer class="footer-box" style="background: #333; padding: 40px 0; color: #fff;">
+    <div class="container" style="max-width: 1140px; margin: 0 auto;">
+      <div class="row">
+        <div class="col-lg-4 col-md-6">
+          <h3 style="color: #ffd1ba;">About Us</h3>
+          <p style="margin: 0; font-size: 14px;">Sweetwedding is dedicated to making your special day unforgettable. We provide comprehensive wedding planning services to ensure your big day is everything you've dreamed of.</p>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <h3 style="color: #ffd1ba;">Quick Links</h3>
+          <ul style="list-style: none; padding: 0; margin: 0;">
+            <li><a href="#" style="color: #ffd1ba; text-decoration: none;">Home</a></li>
+            <li><a href="#" style="color: #ffd1ba; text-decoration: none;">About</a></li>
+            <li><a href="#" style="color: #ffd1ba; text-decoration: none;">Services</a></li>
+            <li><a href="#" style="color: #ffd1ba; text-decoration: none;">Gallery</a></li>
+            <li><a href="#" style="color: #ffd1ba; text-decoration: none;">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4 col-md-12">
+          <h3 style="color: #ffd1ba;">Contact Us</h3>
+          <p style="margin: 0; font-size: 14px;">
+            123 Wedding Lane,<br>
+            Love City, WED 45678<br>
+            Phone: (123) 456-7890<br>
+            Email: info@sweetwedding.com
+          </p>
+          <div style="margin-top: 10px;">
+            <a href="#" style="color: #ffd1ba; text-decoration: none; margin-right: 10px;"><i class="fa fa-facebook"></i></a>
+            <a href="#" style="color: #ffd1ba; text-decoration: none; margin-right: 10px;"><i class="fa fa-twitter"></i></a>
+            <a href="#" style="color: #ffd1ba; text-decoration: none; margin-right: 10px;"><i class="fa fa-instagram"></i></a>
+            <a href="#" style="color: #ffd1ba; text-decoration: none; margin-right: 10px;"><i class="fa fa-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="row" style="margin-top: 20px;">
+        <div class="col-lg-12">
+          <p class="footer-company-name" style="margin: 0; font-size: 14px;">
+            All Rights Reserved. &copy; 2018 
+            <a href="#" style="color: #ffd1ba; text-decoration: none;">Sweetwedding</a> | 
+            Design By : 
+            <a href="https://html.design/" style="color: #ffd1ba; text-decoration: none;">html design</a>
+
+</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- End Footer -->
+
+  <!-- ALL JS FILES -->
+  <script src="{% static 'js/jquery.min.js' %} "></script>
+  <script src="{% static 'js/popper.min.js' %} "></script>
+  <script src="{% static 'js/bootstrap.min.js' %} "></script>
+    <!-- ALL PLUGINS -->
+  <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'js/jquery.pogo-slider.min.js' %} "></script> 
+  <script src="{% static 'js/slider-index.js' %} "></script>
+  <script src="{% static 'js/smoothscroll.js' %} "></script>
+  <script src="{% static 'js/responsiveslides.min.js' %} "></script>
+    <script src="{% static 'js/timeLine.min.js' %} "></script>  
+  <script src="{% static 'js/form-validator.min.js' %} "></script>
+    <script src="{% static 'js/contact-form-script.js' %} "></script>
+    <script src="{% static 'js/custom.js' %} "></script>
+  <script src="{% static 'https://kit.fontawesome.com/a076d05399.js' %}"></script>
+  <script>
+    document.querySelectorAll('.ulockd-ffact-one').forEach(function(element) {
+      element.addEventListener('mouseover', function() {
+        this.style.background = '#e9ecef';
+        this.style.transform = 'translateY(-5px)';
+        this.style.boxShadow = '0 8px 16px rgba(0,0,0,0.2)';
+      });
+      element.addEventListener('mouseout', function() {
+        this.style.background = '#f8f9fa';
+        this.style.transform = 'translateY(0)';
+        this.style.boxShadow = '0 4px 8px rgba(0,0,0,0.1)';
+      });
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload CSV</title>
+    <style>
+        /* Reset some default styling */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Background styling with a reddish tone */
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #ffcccb; /* Light red background color */
+        }
+
+        /* Centered form styling */
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.9); /* Slightly translucent white background */
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        /* Header styling */
+        h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        /* File input styling */
+        input[type="file"] {
+            display: block;
+            margin: 0 auto 20px auto;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: border 0.3s;
+        }
+
+        /* Submit button styling */
+        input[type="submit"] {
+            background-color: #d32f2f; /* Dark red */
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        /* Hover effects */
+        input[type="file"]:hover {
+            border-color: #aaa;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #b71c1c; /* Darker red on hover */
+        }
+
+        /* Responsive design */
+        @media (max-width: 600px) {
+            .form-container {
+                padding: 20px;
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Upload CSV File</h1>
+        <form method="POST" enctype="multipart/form-data" action="{% url 'recbulkupload' %}">
+            {% csrf_token %}
+            <input type="file" name="csvfile" required/>
+            <input type="submit" value="Submit"/>
+        </form>
+    </div>
+</body>
+</html>

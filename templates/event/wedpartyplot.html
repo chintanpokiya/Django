@@ -1,0 +1,249 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Party Plots</title>
+
+    <style>
+        /* General page styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: radial-gradient(circle, #8B0000 30%, #2B0000 100%); /* Dark red gradient */
+            margin: 0;
+            padding: 20px;
+            color: #fff;  /* White text for contrast */
+        }
+    
+        h1 {
+            text-align: center;
+            font-family: 'Georgia', serif;
+            font-size: 36px;
+            color: #FFD700;  /* Gold for the heading */
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+        }
+    
+        /* Container for the gallery */
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+    
+        /* Individual image container */
+        .image-con {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background-color: #8B0000; /* Dark red for image containers */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Darker shadow for depth */
+            transition: all 0.3s ease;
+            overflow: hidden;
+            position: relative; /* Positioning context for button */
+        }
+    
+        .image-con:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7); /* Stronger shadow on hover */
+        }
+    
+        .image-item {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            border-radius: 10px 10px 0 0;
+        }
+    
+        /* Make images clickable */
+        .image-item a {
+            text-decoration: none;
+            color: inherit;
+        }
+    
+        /* Styling each image */
+        .image-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px 10px 0 0;
+            transition: transform 0.3s ease;
+        }
+    
+        /* Hover effect on image */
+        .image-item:hover img {
+            transform: scale(1.1);
+        }
+    
+        /* Caption styling */
+        .image-caption {
+            background-color: rgba(0, 0, 0, 0.7); /* Dark, transparent black */
+            color: #FFD700; /* Gold for captions */
+            padding: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 0 0 10px 10px;
+        }
+    
+        /* Price styling */
+        .image-txt {
+            margin-top: 10px;
+            background-color: #330000; /* Darker red background for price section */
+            padding: 15px;
+            width: 100%;
+        }
+    
+        .image-txt h3 {
+            font-size: 18px;
+            color: #FFD700;  /* Gold for price text */
+            margin: 0;
+        }
+
+        /* Button styling */
+        .book-button {
+            background-color: #FFD700; /* Gold background */
+            color: #000; /* Black text */
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            text-decoration: none; /* Remove underline from links */
+            display: inline-block; /* Ensure it's treated as a block for spacing */
+            transition: background-color 0.3s ease;
+        }
+
+        /* Hover effect for button */
+        .book-button:hover {
+            background-color: #FFC107; /* Slightly darker gold on hover */
+        }
+
+        /* Responsive design */
+        @media screen and (max-width: 1024px) {
+            .gallery-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    
+        @media screen and (max-width: 768px) {
+            .gallery-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    
+        @media screen and (max-width: 480px) {
+            .gallery-container {
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Party Plots</h1>
+
+    <div class="gallery-container">
+        <!-- Image 1 -->
+        <div class="image-con">
+            <div class="image-item">
+                    <img src="{% static 'images/banquee.webp' %}" alt="Banquee">
+                    <div class="image-caption">RK Banquee Hall</div>
+            </div>
+            <div class="image-txt">
+                <h3>Price: ₹15,000</h3>
+            </div>
+            <a class="book-button" href="{% url 'wedform' %}?theme=RK%20Banquee%20Hall&price=15000">Book Party Plot</a>
+        </div>
+       
+        <!-- Image 2 -->
+        <div class="image-con">
+            <div class="image-item">
+                    <img src="{% static 'images/greenpalace.jpg' %}" alt="Green Palace">
+                    <div class="image-caption">Green Palace</div>
+            </div>
+            <div class="image-txt">
+                <h3>Price: ₹18,000</h3>
+            </div>
+            <a class="book-button" href="{% url 'wedform' %}?theme=Green%20Palace&price=18000">Book Party Plot</a>
+        </div>
+
+        <!-- Image 3 -->
+        <div class="image-con">
+            <div class="image-item">
+                    <img src="{% static 'images/krishna.jpg' %}" alt="Krishna">
+                    <div class="image-caption">Krishna Farm</div>
+            </div>
+            <div class="image-txt">
+                <h3>Price: ₹20,000</h3>
+            </div>
+            <a class="book-button" href="{% url 'wedform' %}?theme=Krishna%20Farm&price=20000">Book Party Plot</a>
+        </div>
+
+        <!-- Image 4 -->
+        <div class="image-con">
+            <div class="image-item">
+                    <img src="{% static 'images/vrundavan.png' %}" alt="Vrundavan">
+                    <div class="image-caption">Vrundavan Lawns</div>
+            </div>
+            <div class="image-txt">
+                <h3>Price: ₹22,000</h3>
+            </div>
+            <a class="book-button" href="{% url 'wedform' %}?theme=Vrundavan%20Lawns&price=22000">Book Party Plot</a>
+        </div>
+
+        <!-- Image 5 -->
+        <div class="image-con">
+            <div class="image-item">
+                    <img src="{% static 'images/sunshine.jpg' %}" alt="Sunshine Garden">
+                    <div class="image-caption">Sunshine Garden</div>
+            </div>
+            <div class="image-txt">
+                <h3>Price: ₹25,000</h3>
+            </div>
+            <a class="book-button" href="{% url 'wedform' %}?theme=Sunshine%20Garden&price=25000">Book Party Plot</a>
+        </div>
+
+        <!-- Image 6 -->
+        <div class="image-con">
+            <div class="image-item">
+                    <img src="{% static 'images/oakwood.jpg' %}" alt="Oakwood Estate">
+                    <div class="image-caption">Oakwood Estate</div>
+            </div>
+            <div class="image-txt">
+                <h3>Price: ₹28,000</h3>
+            </div>
+            <a class="book-button" href="{% url 'wedform' %}?theme=Oakwood%20Estate&price=28000">Book Party Plot</a>
+        </div>
+
+        <!-- Image 7 -->
+        <div class="image-con">
+            <div class="image-item">
+                    <img src="{% static 'images/9brothers.jpg' %}" alt="Riverdale">
+                    <div class="image-caption">9brothers Lawns</div>
+            </div>
+            <div class="image-txt">
+                <h3>Price: ₹30,000</h3>
+            </div>
+            <a class="book-button" href="{% url 'wedform' %}?theme=9brothers%20Lawns&price=30000">Book Party Plot</a>
+        </div>
+
+        <!-- Image 8 -->
+        <div class="image-con">
+            <div class="image-item">
+                    <img src="{% static 'images/grandpalace.jpg' %}" alt="Grand Palace">
+                    <div class="image-caption">Grand Palace</div>
+            </div>
+            <div class="image-txt">
+                <h3>Price: ₹32,000</h3>
+            </div>
+            <a class="book-button" href="{% url 'wedform' %}?theme=Grand%20Palace&price=32000">Book Party Plot</a>
+        </div>
+    </div>
+
+</body>
+</html>

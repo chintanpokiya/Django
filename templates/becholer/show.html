@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+{% block content %}
+<center><h1>Show Orders</h1></center>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Order Id</th>
+            <th scope="col">Image</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Max_Budget</th>
+            <th scope="col">Email ID</th>
+            <th scope="col">Address</th>
+            <th scope="col">Actions</th>
+        </tr>    
+    </thead>
+    <tbody>
+        {% for i in obj %}
+        <tr>
+            <td>{{i.oid}}</td>
+            <td><img src="/media/{{i.image}}" width="50px" height="50px"></td>
+            <td>{{i.fname}}</td>
+            <td>{{i.lname}}</td>
+            <td>{{i.gender}}</td>
+            <td>{{i.max_budget}}</td>
+            <td>{{i.mail}}</td>
+            <td>{{i.addr}}</td>
+            <td>
+                <button class="btn btn-warning"><a href="#">Update</a></button>&nbsp;&nbsp;
+                <button class="btn btn-danger"><a href="#">Delete</a></button>
+                    <a href="#" class="btn btn-success btn-sm">PDF</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+<table>
+{% endblock %}
